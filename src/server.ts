@@ -3,13 +3,11 @@ import { Logger } from '@overnightjs/logger';
 import * as bodyParser from 'body-parser';
 import { UserController } from './controllers/UserController';
 
-export default class PhantomServer extends Server {
+class PhantomServer extends Server {
   private readonly SERVER_START_MESSAGE = 'Phantom server started on port : ';
 
   constructor() {
     super(true);
-
-    // this.app.use(cors());
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.setupControllers();
@@ -26,3 +24,5 @@ export default class PhantomServer extends Server {
     });
   }
 }
+
+export default new PhantomServer().app;
