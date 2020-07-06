@@ -8,7 +8,7 @@
     "lint": "eslint -c .eslintrc.js --ext .ts ./src",
     "test": " nyc --reporter=html --reporter=text mocha -r ts-node/register src/**/*.test.ts",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "postinstall":"tsc",
+    "postinstall": "tsc",
     "start": "node ./build/start.js"
   },
   "keywords": [],
@@ -38,7 +38,6 @@
     "supertest": "^4.0.2",
     "tslint": "^6.1.2",
     "tsc-watch": "^4.2.9"
-    
   },
   "dependencies": {
     "@overnightjs/core": "^1.7.4",
