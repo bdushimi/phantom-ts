@@ -1,0 +1,24 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "commonjs" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
+    "baseUrl": "./",
+    "rootDir": "src",
+    "outDir": "build" /* Redirect output structure to the directory. */,
+    "sourceMap": true /* Generates corresponding '.map' file. */,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "target": "es6" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */,
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"]
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["./src/**/*.test.ts", "./src/public/"]
+}
