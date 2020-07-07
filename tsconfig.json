@@ -5,7 +5,7 @@
     "strict": true /* Enable all strict type-checking options. */,
     "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
     "baseUrl": "./",
-    "rootDir": "./",
+    "rootDir": "./src",
     "outDir": "build" /* Redirect output structure to the directory. */,
     "sourceMap": true /* Generates corresponding '.map' file. */,
     "removeComments": true,
@@ -20,5 +20,5 @@
     "typeRoots": ["node_modules/@types"]
   },
   "include": ["./src/**/*.ts", "src/config/swagger.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "node_modules"]
 }

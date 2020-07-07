@@ -7,7 +7,10 @@
     "start:dev": "nodemon --config \"./nodemon.json\"/",
     "lint": "eslint -c .eslintrc.js --ext .ts ./src",
     "test": " nyc --reporter=html --reporter=text mocha -r ts-node/register src/**/*.test.ts",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node ./build/start.js"
   },
   "keywords": [],
   "author": "",
