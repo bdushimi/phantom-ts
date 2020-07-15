@@ -1,7 +1,7 @@
 import { Server } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
 import * as bodyParser from 'body-parser';
-import { UserController } from './controllers/UserController';
+import { RoleController } from './controllers/RoleController';
 
 class PhantomServer extends Server {
   private readonly SERVER_START_MESSAGE = 'Phantom server started on port : ';
@@ -14,8 +14,8 @@ class PhantomServer extends Server {
   }
 
   private setupControllers(): void {
-    const userController = new UserController();
-    super.addControllers([userController]);
+    const roleController = new RoleController();
+    super.addControllers([roleController]);
   }
 
   public start(port: number): void {
