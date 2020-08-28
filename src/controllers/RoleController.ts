@@ -1,13 +1,17 @@
 import { Request, Response } from 'express';
-import { OK, INTERNAL_SERVER_ERROR } from 'http-status-codes';
+import { OK } from 'http-status-codes';
 import { Controller, Post, Get } from '@overnightjs/core';
 import { getRepository } from 'typeorm';
 import { Role } from '../entity/Role';
 import IRole from '../interfaces/Role';
-import { Logger } from '@overnightjs/logger';
 
 @Controller('api/')
 export class RoleController {
+  @Get('')
+  private getWelcomeMessage = (req: Request, res: Response) => {
+    res.status(OK).json({ response: 'Welcome to Phantom' });
+  };
+
   @Post('roles')
   private addRole = async (req: Request, res: Response) => {
     const roleBody: IRole = req.body as IRole;

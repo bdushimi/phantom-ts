@@ -6,14 +6,13 @@ import { Logger } from '@overnightjs/logger';
 
 dotenv.config();
 /** Create a connection to the database */
-(async () => {
+void (async () => {
   try {
     const dbConnection = await createConnection(config);
-    // await dbConnection.runMigrations();
+    await dbConnection.runMigrations();
     Logger.Imp('Successful Connection to the Database');
   } catch (error) {
     Logger.Err('Error while connecting to the database', error);
-    return error;
   }
 })();
 
