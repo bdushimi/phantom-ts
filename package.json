@@ -10,7 +10,7 @@
       "test:staging": " NODE_ENV=staging nyc --reporter=html --reporter=text mocha -r ts-node/register src/**/*.test.ts",
       "coveralls": "nyc report --reporter=text-lcov | coveralls",
       "clean": "rm -rf build",
-      "build": "npm run clean && node_modules/typescript/bin/tsc",
+      "build": "npm run clean && tsc",
       "prestart": "npm run migration:run",
       "start": "npm run build && node build/start.js",
       "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./src/ormconfig.ts",
