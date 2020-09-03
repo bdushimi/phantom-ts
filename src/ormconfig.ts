@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === process.env.STAGING) {
       migrationsDir: 'src/migration',
     },
   };
-} else {
+} else if (process.env.NODE_ENV === process.env.DEVELOP) {
   config = {
     type: 'postgres',
     host: process.env.DEV_HOST,
@@ -34,6 +34,24 @@ if (process.env.NODE_ENV === process.env.STAGING) {
     username: process.env.DEV_USERNAME,
     password: process.env.DEV_PASSWORD,
     database: process.env.DEV_DATABASE,
+    synchronize: false,
+    logging: false,
+    entities: [__dirname + '/entity/**/*{.ts,.js}'],
+    migrations: ['src/migration/**/*.ts'],
+    subscribers: ['src/subscriber/**/*.ts'],
+    cli: {
+      entitiesDir: 'src/entity',
+      migrationsDir: 'src/migration',
+    },
+  };
+} else {
+  config = {
+    type: 'postgres',
+    host: process.env.PROD_HOST,
+    port: Number(process.env.DATABASE_PORT),
+    username: process.env.PROD_USERNAME,
+    password: process.env.PROD_PASSWORD,
+    database: process.env.PROD_DATABASE,
     synchronize: false,
     logging: false,
     entities: [__dirname + '/entity/**/*{.ts,.js}'],
