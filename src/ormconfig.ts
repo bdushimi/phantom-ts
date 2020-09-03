@@ -1,6 +1,5 @@
 import { ConnectionOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
-import { Logger } from '@overnightjs/logger';
 
 dotenv.config();
 let config: ConnectionOptions;
