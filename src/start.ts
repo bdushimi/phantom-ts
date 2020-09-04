@@ -8,8 +8,7 @@ dotenv.config();
 /** Create a connection to the database */
 void (async () => {
   try {
-    const dbConnection = await createConnection(config);
-    await dbConnection.runMigrations();
+    await createConnection(config);
     Logger.Imp('Successful Connection to the Database');
   } catch (error) {
     Logger.Err('Error while connecting to the database', error);
