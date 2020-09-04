@@ -9,10 +9,10 @@
       "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register src/**/*.test.ts",
       "test:staging": " NODE_ENV=staging nyc --reporter=html --reporter=text mocha -r ts-node/register src/**/*.test.ts",
       "coveralls": "nyc report --reporter=text-lcov | coveralls",
-      "clean": "rm -rf build",
-      "build": "npm run clean && tsc",
+      "preinstall": "rm -rf build",
+      "postinstall": "tsc",
       "prestart": "npm run migration:run",
-      "start": "npm run build && node build/start.js",
+      "start": "node build/start.js",
       "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./src/ormconfig.ts",
       "migration:run": "npm run typeorm:cli -- migration:run",
       "migration:undo": "npm run typeorm:cli -- migration:revert"
