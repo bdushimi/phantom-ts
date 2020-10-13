@@ -8,7 +8,9 @@ let config: ConnectionOptions;
  * Check the current environment and return a corresponding connection options
  */
 
-if (process.env.NODE_ENV === process.env.STAGING) {
+const environment = process.env.NODE_ENV || 'development';
+
+if (environment === process.env.TESTING) {
   config = {
     type: 'postgres',
     host: process.env.TEST_HOST,
@@ -26,25 +28,7 @@ if (process.env.NODE_ENV === process.env.STAGING) {
       migrationsDir: 'src/migration',
     },
   };
-} else if (process.env.NODE_ENV === process.env.DEVELOP) {
-  config = {
-    type: 'postgres',
-    host: process.env.DEV_HOST,
-    port: Number(process.env.DATABASE_PORT),
-    username: process.env.DEV_USERNAME,
-    password: process.env.DEV_PASSWORD,
-    database: process.env.DEV_DATABASE,
-    synchronize: false,
-    logging: false,
-    entities: [__dirname + '/entity/**/*{.ts,.js}'],
-    migrations: ['src/migration/**/*.ts'],
-    subscribers: ['src/subscriber/**/*.ts'],
-    cli: {
-      entitiesDir: 'src/entity',
-      migrationsDir: 'src/migration',
-    },
-  };
-} else {
+} else if (environment === process.env.PRODUCTION){
   config = {
     type: 'postgres',
     host: process.env.PROD_HOST,
@@ -54,7 +38,25 @@ if (process.env.NODE_ENV === process.env.STAGING) {
     database: process.env.PROD_DATABASE,
     synchronize: false,
     logging: false,
-    entities: [__dirname + '/entity/**/*{.ts,.js}'],
+    entities: ['./src/entity/**/*{.ts,.js}'],
+    migrations: ['./src/migration/**/*.ts'],
+    subscribers: ['./src/subscriber/**/*.ts'],
+    cli: {
+      entitiesDir: 'src/entity',
+      migrationsDir: 'src/migration',
+    },
+  };
+} else {
+  config = {
+    type: 'postgres',
+    host: process.env.DEV_HOST,
+    port: Number(process.env.DATABASE_PORT),
+    username: process.env.DEV_USERNAME,
+    password: process.env.DEV_PASSWORD,
+    database: process.env.DEV_DATABASE,
+    synchronize: false,
+    logging: false,
+    entities: ['src/entity/**/*{.ts,.js}'],
     migrations: ['src/migration/**/*.ts'],
     subscribers: ['src/subscriber/**/*.ts'],
     cli: {

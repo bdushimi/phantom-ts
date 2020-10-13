@@ -4,18 +4,17 @@
    "description": "",
    "main": "./build/start.js",
    "scripts": {
-      "start:dev": "NODE_ENV=develop nodemon --config \"./nodemon.json\"/",
+      "start:dev": "nodemon --config \"./nodemon.json\"/",
       "lint": "eslint -c .eslintrc.js --ext .ts ./src",
       "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register src/**/*.test.ts",
-      "test:staging": " NODE_ENV=staging nyc --reporter=html --reporter=text mocha -r ts-node/register src/**/*.test.ts",
+      "test:staging": " NODE_ENV=testing nyc --reporter=html --reporter=text mocha -r ts-node/register src/**/*.test.ts",
       "coveralls": "nyc report --reporter=text-lcov | coveralls",
       "preinstall": "rm -rf build",
       "postinstall": "tsc",
-      "prestart": "npm run migration:run",
-      "start": "node build/start.js",
+      "start": "NODE_ENV=production node build/start.js",
       "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./src/ormconfig.ts",
-      "migration:run": "npm run typeorm:cli -- migration:run",
-      "migration:undo": "npm run typeorm:cli -- migration:revert"
+      "migration:run": "ts-node ./node_modules/typeorm/cli -f ./src/ormconfig.ts -- migration:run",
+      "migration:undo": "ts-node ./node_modules/typeorm/cli -f ./src/ormconfig.ts -- migration:revert"
    },
    "keywords": [],
    "author": "",
