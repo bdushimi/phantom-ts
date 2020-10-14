@@ -1,7 +1,7 @@
 import app from './server';
 import { createConnection } from 'typeorm';
 import * as dotenv from 'dotenv';
-import * as config from './ormconfig';
+import config  from './ormconfig';
 import { Logger } from '@overnightjs/logger';
 
 dotenv.config();
