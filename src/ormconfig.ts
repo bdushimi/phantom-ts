@@ -66,4 +66,4 @@ if (environment === process.env.TESTING) {
   };
 }
 
-export = config;
+module.exports = config;
