@@ -3,6 +3,9 @@
    "version": "1.0.0",
    "description": "",
    "main": "./build/start.js",
+   "engines": {
+      "node": "12.x"
+   },
    "scripts": {
       "start:dev": "nodemon --config \"./nodemon.json\"/",
       "lint": "eslint -c .eslintrc.js --ext .ts ./src",
@@ -42,8 +45,7 @@
       "nodemon": "^2.0.5",
       "nyc": "^15.1.0",
       "sinon": "^9.2.0",
-      "supertest": "^4.0.2",
-      "ts-node": "3.3.0"
+      "supertest": "^4.0.2"
    },
    "dependencies": {
       "@overnightjs/core": "^1.7.5",
